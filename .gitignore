@@ -1,0 +1,7 @@
+.vscode
+output
+.env*
+.cache/
+.DS_Store
+.idea
+node_modules/
