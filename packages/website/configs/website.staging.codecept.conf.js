@@ -5,11 +5,11 @@ var myArgs = process.argv.slice(2);
 setHeadlessWhen(process.env.HEADLESS);
 
 exports.config = {
-  tests: '../tests/*_test.js',
+  tests: '../tests/staging/*_test.js',
   output: './output',
   helpers: {
     Playwright: {
-      url: `https://dy3shwc4ht83r.cloudfront.net/`,
+      url: `https://staging.sprinklr.com/`,
       show: true,
       browser: 'chromium'
     }
