@@ -1,3 +1,4 @@
-To run tests
+yarn install
 
+To run tests
 ./tests.sh website.staging
