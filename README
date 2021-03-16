@@ -1,4 +1,6 @@
 yarn install
 
 To run tests
+./tests.sh website.explore
+
 ./tests.sh website.staging
