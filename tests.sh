@@ -18,4 +18,11 @@ fi
 #     esac
 # done
 
-npx codeceptjs run -c "./packages/${arrIN[0]}/configs/${IN}.codecept.conf.js"
+#npx codeceptjs run -c "./packages/${arrIN[0]}/configs/${IN}.codecept.conf.js"
+#npx run codeceptjs:ui --config "./packages/${arrIN[0]}/configs/${IN}.codecept.conf.js"
+
+#npx codecept-ui --app --config "./packages/${arrIN[0]}/configs/${IN}.codecept.conf.js"
+
+echo ./packages/${arrIN[0]}/configs/${IN}.codecept.conf.js
+
+codecept run --config="./packages/website/configs/website.staging.codecept.conf.js"
