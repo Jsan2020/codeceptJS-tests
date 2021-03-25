@@ -5,3 +5,5 @@ output
 .DS_Store
 .idea
 node_modules/
+_output
+_support
