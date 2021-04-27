@@ -5,17 +5,24 @@ var myArgs = process.argv.slice(2);
 setHeadlessWhen(process.env.HEADLESS);
 
 exports.config = {
-  tests: '../tests/*_test.js',
+  tests: '../tests/prod/*_test.js',
   output: './output',
   helpers: {
     Playwright: {
-      url: `https://staging.sprinklr.com/`,
+      url: `https://www.sprinklr.com`,
       show: true,
       browser: 'chromium'
-    }
+    },
+    "ResembleHelper" : {
+      "require": "codeceptjs-resemblehelper",
+      "screenshotFolder" : "../output/",
+      "baseFolder": "../output/screenshots/base/",
+      "diffFolder": "../output/screenshots/diff/"
+    },
   },
+
   include: {
-    I: './steps_file.js'
+    I: '../../../steps_file.js'
   },
   bootstrap: null,
   mocha: {},

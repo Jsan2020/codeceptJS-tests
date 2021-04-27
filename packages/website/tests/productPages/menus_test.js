@@ -8,20 +8,20 @@ Scenario('Testing menu links', ({ I }) => {
 
     // main menu
     I.see("Products");
-      // I.click("Products"); // products no longer clickable
+      //products in main nav no longer clickable 3.31.2021
+      // I.click("Products");
       // I.seeInCurrentUrl(`${host}/products/`);
       // I.amOnPage(`${host}`);
 
       //need IDs someday!
-      //const productsXpath = "//body/div[@id='___gatsby']/div[@id='gatsby-focus-wrapper']/div[1]/div[1]/div[1]/div[1]/div[1]/a[1]";
-      productsXpath = locate('div').withText("Products").first();
+      const productsXpath = ".css-1j42lx-HeaderLink";
       I.moveCursorTo(productsXpath);
       I.click("Modern Marketing & Advertising");
       I.seeInCurrentUrl(`${host}/modern-marketing`);
 
-      // I.moveCursorTo(productsXpath); modern avertising has been merged
-      // I.click("Modern Advertising");
-      // I.seeInCurrentUrl(`${host}/modern-advertising`);
+      I.moveCursorTo(productsXpath);
+      I.click("Modern Advertising");
+      I.seeInCurrentUrl(`${host}/modern-advertising`);
 
       I.moveCursorTo(productsXpath);
       I.click("Modern Research");
@@ -50,7 +50,7 @@ Scenario('Testing menu links', ({ I }) => {
       I.closeCurrentTab();
       I.amOnPage(`${host}`);
 
-    const servicesXpath = "//body/div[@id='___gatsby']/div[@id='gatsby-focus-wrapper']/div[1]/div[1]/div[1]/div[1]/div[3]/div[1]";
+    const servicesXpath = "//*[@id='gatsby-focus-wrapper']/div[1]/div/div/div[1]/div[3]/div";
     I.see("Services");
       I.moveCursorTo(servicesXpath); 
       I.click("Our Services");
@@ -79,7 +79,7 @@ Scenario('Testing menu links', ({ I }) => {
       I.amOnPage(`${host}`);
     
      // would be nice to have some unique ids
-     const aboutUsXpath = "//body/div[@id='___gatsby']/div[@id='gatsby-focus-wrapper']/div[1]/div[1]/div[1]/div[1]/div[5]/div[1]"
+     const aboutUsXpath = "//*[@id='gatsby-focus-wrapper']/div[1]/div/div/div[1]/div[7]/div"
      I.see("About Us");
       I.moveCursorTo(aboutUsXpath);
       I.click("Our Story");
@@ -113,35 +113,35 @@ Scenario('Testing menu links', ({ I }) => {
       I.see("Login");
 
     // language switcher
-    I.amOnPage(`${host}/products/`);
-    const globeSvg = "svg.css-nm1046";
-    I.moveCursorTo(globeSvg);
+    let languagePopOver = '.css-r2h7gc-LanguageSelector';
+    I.amOnPage(`${host}/products`);
+    I.moveCursorTo(languagePopOver);
       I.click("English (US)");
       //I.seeInCurrentUrl(`${prod}/products`); // needs an update in Contentful
-      I.seeInCurrentUrl(`${host}/products/`);
+      I.seeInCurrentUrl(`${prod}/products`);
       
-      I.amOnPage(`${host}/products/`);
-      I.moveCursorTo(globeSvg);
+      I.amOnPage(`${host}/products`);
+      I.moveCursorTo(languagePopOver);
       I.click("English (GB)");
-      I.seeInCurrentUrl(`${host}/gb/products/`);
+      I.seeInCurrentUrl(`${prod}/gb/products/`);
       
-      I.amOnPage(`${host}/products/`);
-      I.moveCursorTo(globeSvg);
+      I.amOnPage(`${host}/products`);
+      I.moveCursorTo(languagePopOver);
       I.click("Português");
-      I.seeInCurrentUrl(`${host}/pt-br/products/`);
+      I.seeInCurrentUrl(`${prod}/pt-br/products/`);
 
-      I.amOnPage(`${host}/products/`);
-      I.moveCursorTo(globeSvg);
+      I.amOnPage(`${host}/products`);
+      I.moveCursorTo(languagePopOver);
       I.click("Français");
-      I.seeInCurrentUrl(`${host}/fr/products/`);
+      I.seeInCurrentUrl(`${prod}/fr/products/`);
 
-      I.amOnPage(`${host}/products/`);
-      I.moveCursorTo(globeSvg);
+      I.amOnPage(`${host}/products`);
+      I.moveCursorTo(languagePopOver);
       I.click("日本語");
-      I.seeInCurrentUrl(`${host}/jp/products/`);
+      I.seeInCurrentUrl(`${prod}/ja/products/`);
 
     I.amOnPage(`${host}`);
-    let foo = locate("Events").inside('.css-tuy9hw');
+    // //let foo = locate("Events").inside('.css-tuy9hw');
  
 
 
@@ -156,15 +156,15 @@ Scenario('Testing menu links', ({ I }) => {
     // });
 
     // footer without within
-    // I.amOnPage(`${host}`); products link no longer clickable
-    // footerClick("Products");
+    I.amOnPage(`${host}`);
+    // footerClick("Products"); // products is no longer a link
     // I.amOnPage(`${host}/products`);
 
     footerClick("Modern Marketing & Advertising");
     I.seeInCurrentUrl(`${host}/modern-marketing`);
 
-    // footerClick("Modern Advertising");
-    // I.seeInCurrentUrl(`${host}/modern-advertising`);
+    footerClick("Modern Advertising");
+    I.seeInCurrentUrl(`${host}/modern-advertising`);
 
     footerClick("Modern Research");
     I.seeInCurrentUrl(`${host}/modern-research`);
@@ -203,7 +203,7 @@ Scenario('Testing menu links', ({ I }) => {
     I.seeInCurrentUrl(`${host}/services`);
 
     footerClick("Events");
-    I.seeInCurrentUrl(`${host}/events/?category=virtual-events/`); // needs update in contentful to https://sprinklr.com/events/?category=virtual-events/
+    I.seeInCurrentUrl(`${host}/events`); // needs update in contentful to https://sprinklr.com/events/?category=virtual-events/
 
     footerClick("Customer Stories");
     I.seeInCurrentUrl(`${host}/stories`);
